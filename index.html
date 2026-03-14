@@ -13,14 +13,29 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><line x1='36' y1='36' x2='14' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='14' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><circle cx='14' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='58' r='11' fill='%234a9e6e'/><circle cx='14' cy='58' r='11' fill='%234a9e6e'/><circle cx='36' cy='36' r='10' fill='%234a9e6e'/></svg>">
 
   <link rel="apple-touch-icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d1812'/><circle cx='50' cy='50' r='13' fill='%234a9e6e'/></svg>">
-  <meta name="theme-color" content="#080d12">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><line x1='36' y1='36' x2='14' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='14' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><circle cx='14' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='58' r='11' fill='%234a9e6e'/><circle cx='14' cy='58' r='11' fill='%234a9e6e'/><circle cx='36' cy='36' r='10' fill='%234a9e6e'/></svg>">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f8f5">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080d12">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
-    rel="stylesheet">
+  <!-- Lokale Schriftarten eingebunden -->
+  <style>
+    @font-face {
+      font-family: 'Syne';
+      src: url('assets/Syne.woff2') format('woff2');
+      font-weight: 400 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      src: url('assets/DMSans.woff2') format('woff2');
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
 
   <style>
     *,
@@ -215,13 +230,13 @@
       overflow: hidden;
     }
 
-    .hero-iframe-bg {
+    .hero-video-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      filter: brightness(0.72);
+      object-fit: cover;
+      filter: brightness(0.6);
     }
 
     .hero-overlay {
@@ -517,6 +532,10 @@
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card::before {
@@ -526,6 +545,7 @@
       background: linear-gradient(135deg, var(--sage-mist) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
+      z-index: 0;
     }
 
     .service-card:hover {
@@ -533,9 +553,281 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     }
+    
+    @media (prefers-color-scheme: light) {
+      .service-card:hover {
+        box-shadow: 0 20px 60px rgba(74, 158, 110, 0.15);
+      }
+    }
 
     .service-card:hover::before {
       opacity: 1;
+    }
+
+    /* ── CARD 1: Wireframe Drone ── */
+    .card-drone {
+      perspective: 1000px;
+    }
+    
+    .card-drone .front, 
+    .card-drone .back {
+      position: absolute;
+      inset: 0;
+      padding: 34px 26px;
+      backface-visibility: hidden;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    
+    .card-drone .front {
+      background: var(--dark-card);
+      transform: rotateY(0deg);
+    }
+    
+    .card-drone .back {
+      background: var(--sage-deep);
+      color: #eaf2ec;
+      transform: rotateY(180deg);
+      background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      justify-content: center;
+    }
+    
+    .card-drone.active .front {
+      transform: rotateY(-180deg);
+    }
+    
+    .card-drone.active .back {
+      transform: rotateY(0deg);
+    }
+    
+    .card-back-text {
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ── CARD 2: Splatter / Particle ── */
+    .card-splat .content-wrap {
+      transition: opacity 0.3s, filter 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      z-index: 2;
+      position: relative;
+    }
+    
+    .card-splat.shattering .content-wrap {
+      opacity: 0;
+      filter: blur(4px);
+    }
+    
+    .splat-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      opacity: 0;
+    }
+    
+    .card-splat .back {
+      position: absolute;
+      inset: 0;
+      padding: 34px 26px;
+      background: var(--dark-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s 0.4s; /* Delay behind shatter */
+      z-index: 2;
+    }
+    
+    .card-splat.active .back {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .citation-box {
+      border: 1px solid var(--sage);
+      border-radius: 12px;
+      padding: 24px 20px;
+      background: var(--sage-mist);
+      text-align: left;
+      width: 100%;
+    }
+    
+    .citation-box h4 {
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    
+    .citation-box .sub {
+      font-size: 11px;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    
+    .citation-box .abstract {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    
+    /* ── CARD 3: 4D Progressive ── */
+    .card-4d .stages {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .card-4d .stage-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      filter: brightness(0.3);
+    }
+    
+    .card-4d.stage-1 .stage-bg.bg-1 { opacity: 0.15; filter: grayscale(1) brightness(0.3); }
+    .card-4d.stage-2 .stage-bg.bg-2 { opacity: 0.25; filter: hue-rotate(90deg) brightness(0.4); } /* Fake heatmap */
+    .card-4d.stage-3 .stage-bg.bg-3 { opacity: 0.2; }
+    
+    .card-4d .content-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card-4d .front-content {
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    
+    .card-4d.stage-3 .front-content {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+    
+    .card-4d .back-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s 0.2s, transform 0.4s 0.2s;
+      pointer-events: none;
+    }
+    
+    .card-4d.stage-3 .back-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    
+    .stage-indicator {
+      display: flex;
+      gap: 6px;
+      margin-top: auto;
+      margin-bottom: 12px;
+      z-index: 2;
+    }
+    
+    .stage-dot {
+      width: 24px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+    
+    .card-4d.stage-1 .stage-dot:nth-child(1),
+    .card-4d.stage-2 .stage-dot:nth-child(1),
+    .card-4d.stage-2 .stage-dot:nth-child(2),
+    .card-4d.stage-3 .stage-dot {
+      background: var(--sage);
+    }
+    
+    .stage-label-wrap {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      height: 16px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    
+    .stage-label {
+      transition: transform 0.4s;
+      display: block;
+    }
+    
+    .card-4d.stage-1 .stage-label { transform: translateY(0); }
+    .card-4d.stage-2 .stage-label { transform: translateY(-16px); }
+    .card-4d.stage-3 .stage-label { transform: translateY(-32px); }
+
+    /* ── ICON HELPERS ── */
+    .interactive-hint {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage);
+      z-index: 10;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    @media (prefers-color-scheme: light) {
+      .card-drone .back {
+        color: var(--dark-card);
+        background-color: var(--sage-light);
+        background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+      }
+      .card-4d .stage-bg {
+        filter: brightness(0.8);
+      }
+      .card-4d.stage-1 .stage-bg.bg-1 { opacity: 0.3; filter: grayscale(1) brightness(0.9); }
+      .card-4d.stage-2 .stage-bg.bg-2 { opacity: 0.4; filter: hue-rotate(90deg) brightness(0.9); }
+      .card-4d.stage-3 .stage-bg.bg-3 { opacity: 0.3; filter: brightness(0.9); }
+    }
+    
+    .service-card:hover .interactive-hint {
+      background: var(--sage);
+      color: var(--dark);
+      border-color: var(--sage);
     }
 
     .service-icon {
@@ -564,14 +856,7 @@
     }
 
     .service-num {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      font-family: var(--font-display);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
+      display: none;
     }
 
     .service-card h3 {
@@ -636,6 +921,30 @@
       width: 100%;
       height: 100%;
       border: none;
+      z-index: 1;
+    }
+
+    .cookie-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark-mid);
+      color: var(--text-dim);
+      padding: 24px;
+      text-align: center;
+      z-index: 2;
+    }
+    
+    .cookie-placeholder svg {
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+    
+    .cookie-placeholder button {
+      margin-top: 16px;
     }
 
     .scan-info {
@@ -827,11 +1136,87 @@
       transform: rotate(15deg);
     }
 
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      max-width: 500px;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      z-index: 2000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      display: none;
+    }
+    
+    #cookie-banner.visible {
+      display: block;
+      animation: slideUpCookie 0.4s ease forwards;
+    }
+    
+    @keyframes slideUpCookie {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .cookie-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+    
+    .cookie-text {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .cookie-actions {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .btn-cookie-accept {
+      background: var(--sage);
+      color: var(--dark);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      flex: 1;
+      transition: background 0.2s;
+    }
+    .btn-cookie-accept:hover { background: var(--sage-light); }
+    
+    .btn-cookie-decline {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      flex: 1;
+      transition: all 0.2s;
+    }
+    .btn-cookie-decline:hover { color: var(--text-primary); border-color: var(--text-muted); }
+
     /* ── FOOTER ── */
     footer {
       background: var(--dark-card);
       border-top: 1px solid var(--border);
-      padding: 40px 0 60px;
+      padding: 40px 0 30px;
     }
 
     .footer-inner {
@@ -1100,7 +1485,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#leistungen" onclick="closeMobileNav()">Leistungen</a></li>
         <li><a href="#projekte" onclick="closeMobileNav()">Projekte</a></li>
-        <li><a href="#prozess" onclick="closeMobileNav()">Prozess</a></li>
+        <li><a href="#ablauf" onclick="closeMobileNav()">Ablauf</a></li>
         <li><a href="#kontakt" onclick="openMailto(); closeMobileNav();" class="nav-cta">Anfrage</a></li>
       </ul>
       <div class="nav-toggle" id="navToggle" onclick="toggleMobileNav()">
@@ -1109,12 +1494,12 @@
     </div>
   </nav>
 
-  <!-- HERO — Polycam als Vollbild-Hintergrund -->
+  <!-- HERO — Lokales Video -->
   <section id="home">
-    <!-- Ersetze die Capture-ID mit deiner eigenen Polycam-ID -->
-    <iframe class="hero-iframe-bg" src="https://poly.cam/capture/51296336-3914-4903-b0fc-fb0a3a6bc0e8/embed"
-      title="geometr.io – 3D ESG Scan" allow="xr-spatial-tracking; autoplay; fullscreen" loading="lazy">
-    </iframe>
+    <video class="hero-video-bg" autoplay loop muted playsinline>
+      <source src="assets/hero-placeholder.mp4" type="video/mp4">
+      Ihr Browser unterstützt keine Videos.
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
@@ -1147,26 +1532,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <div class="stats-section">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat reveal">
-          <div class="stat-num">4D</div>
-          <div class="stat-label">ESG-Analysen</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num">mm</div>
-          <div class="stat-label">Messgenauigkeit</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num" style="font-size:42px;line-height:1;">∞</div>
-          <div class="stat-label">Skalierbar</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- LEISTUNGEN -->
   <section id="leistungen">
     <div class="container">
@@ -1178,55 +1543,118 @@
         </div>
       </div>
       <div class="services-grid">
-        <div class="service-card reveal">
-          <span class="service-num">01</span>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
-              <line x1="12" y1="12" x2="4" y2="4" />
-              <line x1="12" y1="12" x2="20" y2="4" />
-              <line x1="12" y1="12" x2="20" y2="20" />
-              <line x1="12" y1="12" x2="4" y2="20" />
-              <circle cx="4" cy="4" r="2.5" />
-              <circle cx="20" cy="4" r="2.5" />
-              <circle cx="20" cy="20" r="2.5" />
-              <circle cx="4" cy="20" r="2.5" />
-              <circle cx="12" cy="12" r="2.5" fill="#4a9e6e" />
-            </svg>
+        
+        <!-- CARD 1: Drone Mapping (Wireframe Click) -->
+        <div class="service-card card-drone reveal" tabindex="0" onclick="this.classList.toggle('active')">
+          <div class="interactive-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           </div>
-          <h3>Drohnen-Mapping</h3>
-          <p>Präzise Befliegung mit DJI-Drohnen. Wir erfassen Gebäude, Freiflächen und Infrastruktur hochauflösend aus
-            der Vogelperspektive — schnell und rechtssicher.</p>
+          
+          <div class="front">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
+                <line x1="12" y1="12" x2="4" y2="4" />
+                <line x1="12" y1="12" x2="20" y2="4" />
+                <line x1="12" y1="12" x2="20" y2="20" />
+                <line x1="12" y1="12" x2="4" y2="20" />
+                <circle cx="4" cy="4" r="2.5" />
+                <circle cx="20" cy="4" r="2.5" />
+                <circle cx="20" cy="20" r="2.5" />
+                <circle cx="4" cy="20" r="2.5" />
+                <circle cx="12" cy="12" r="2.5" fill="#4a9e6e" />
+              </svg>
+            </div>
+            <h3>Drohnen-Mapping</h3>
+            <p>Präzise Befliegung mit DJI-Drohnen. Wir erfassen Gebäude, Freiflächen und Infrastruktur hochauflösend aus
+              der Vogelperspektive — schnell und rechtssicher.</p>
+          </div>
+          
+          <div class="back">
+            <h3 style="color:#fff; margin-bottom: 12px;">📍 Bestandsaufnahme</h3>
+            <p class="card-back-text" style="color:#eaf2ec;">Präzise digitale Bestandsaufnahme mittels DJI-High-End-Sensorik. Wir liefern hochauflösende 2D/3D-Daten – absolut rechtssicher mit Fernpiloten-Lizenz des LBA und umfassender Drohnen-Haftpflichtversicherung.</p>
+          </div>
         </div>
-        <div class="service-card reveal">
-          <span class="service-num">02</span>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
-              <circle cx="12" cy="12" r="3" />
-              <circle cx="12" cy="12" r="7" stroke-dasharray="3 2" />
-              <circle cx="4" cy="8" r="1.5" fill="#4a9e6e" />
-              <circle cx="18" cy="6" r="1.5" fill="#4a9e6e" />
-              <circle cx="20" cy="16" r="1.5" fill="#4a9e6e" />
-              <circle cx="5" cy="17" r="1.5" fill="#4a9e6e" />
-              <circle cx="12" cy="3" r="1.5" fill="#4a9e6e" />
-            </svg>
+
+        <!-- CARD 2: Gaussian Splatting (Shatter Click) -->
+        <div class="service-card card-splat reveal" onclick="triggerSplat(this)">
+          <div class="interactive-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
           </div>
-          <h3>Gaussian Splatting</h3>
-          <p>Aus Drohnendaten entstehen fotorealistische, interaktive 3D-Modelle mit Polycam und Blender. Jedes Detail
-            erhalten — für Präsentationen, BIM-Integration und mehr.</p>
+          <div class="splat-particles"></div>
+          
+          <div class="content-wrap front">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="12" r="7" stroke-dasharray="3 2" />
+                <circle cx="4" cy="8" r="1.5" fill="#4a9e6e" />
+                <circle cx="18" cy="6" r="1.5" fill="#4a9e6e" />
+                <circle cx="20" cy="16" r="1.5" fill="#4a9e6e" />
+                <circle cx="5" cy="17" r="1.5" fill="#4a9e6e" />
+                <circle cx="12" cy="3" r="1.5" fill="#4a9e6e" />
+              </svg>
+            </div>
+            <h3>Gaussian Splatting</h3>
+            <p>Aus Drohnendaten entstehen fotorealistische, interaktive 3D-Modelle. Jedes Detail
+              erhalten — für Präsentationen, BIM-Integration und mehr.</p>
+          </div>
+          
+          <div class="back">
+            <div class="citation-box">
+              <h4 style="font-size: 15px; margin-bottom: 6px;">3D Gaussian Splatting for Real-Time Radiance Field Rendering</h4>
+              <div class="sub">State-of-the-Art Research by Inria</div>
+              <div class="abstract">"Representing scenes with 3D Gaussians to achieve real-time (≥ 30 fps) novel-view synthesis at 1080p resolution with state-of-the-art visual quality."</div>
+              <a href="https://arxiv.org/abs/2308.04079" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 10px 16px; font-size:12px; width:100%; justify-content:center;" onclick="event.stopPropagation()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                View Original Paper
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="service-card reveal">
-          <span class="service-num">03</span>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
-              <rect x="3" y="14" width="4" height="7" rx="1" />
-              <rect x="10" y="9" width="4" height="12" rx="1" />
-              <rect x="17" y="4" width="4" height="17" rx="1" />
-              <path d="M5 14l5-5 4 3 5-8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+
+        <!-- CARD 3: 4D ESG Analysis (Progressive Reveal) -->
+        <div class="service-card card-4d stage-1 reveal" onclick="advanceStage(this)">
+          <div class="interactive-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </div>
-          <h3>4D ESG-Analysen</h3>
-          <p>Zeitliche Veränderungen sichtbar machen: Begrünung, Versiegelung, Solarpotenzial. Unsere 4D-Analysen
-            liefern ESG-relevante Kennzahlen für Immobilien und Kommunen.</p>
+          
+          <div class="stages">
+            <div class="stage-bg bg-1" style="background-image: url('assets/hero-placeholder.mp4');"></div> <!-- Dummy bg, using video placeholder just for texture if needed-->
+            <div class="stage-bg bg-2" style="background-color: var(--sage); opacity: 0.1;"></div>
+            <div class="stage-bg bg-3" style="background-color: var(--sage-deep); opacity: 0.1;"></div>
+          </div>
+          
+          <div class="content-wrap">
+            <div class="front-content">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4a9e6e" stroke-width="1.5">
+                  <rect x="3" y="14" width="4" height="7" rx="1" />
+                  <rect x="10" y="9" width="4" height="12" rx="1" />
+                  <rect x="17" y="4" width="4" height="17" rx="1" />
+                  <path d="M5 14l5-5 4 3 5-8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>4D ESG-Analysen</h3>
+              <p>Zeitliche Veränderungen sichtbar machen: Begrünung, Versiegelung, Solarpotenzial. Unsere Analysen
+                liefern ESG-relevante Kennzahlen.</p>
+            </div>
+            
+            <div class="back-content">
+               <h3 style="color: var(--sage); margin-bottom:12px;">📈 Wertsteigerung</h3>
+               <p class="card-back-text">Vom Ist-Zustand zur ESG-Konformität. Wir machen Potenziale in der 4. Dimension – der Zeit – greifbar. Unsere Analysen liefern valide Daten für nachhaltige Immobilienstrategien und Stakeholder-Reporting.</p>
+            </div>
+            
+            <div class="stage-indicator">
+              <div class="stage-dot"></div>
+              <div class="stage-dot"></div>
+              <div class="stage-dot"></div>
+            </div>
+            <div class="stage-label-wrap">
+              <span class="stage-label">IST-Zustand</span>
+              <span class="stage-label">Analyse & Potenzial</span>
+              <span class="stage-label">VALUE PROP</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1242,8 +1670,13 @@
       <div class="scans-grid">
         <div class="scan-card featured reveal">
           <div class="scan-iframe-wrap">
+            <div class="cookie-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <p>Bitte akzeptieren Sie Cookies, um das 3D-Modell in Echtzeit zu laden und zu erkunden.</p>
+              <button class="btn-secondary" onclick="openCookieSettings()" style="padding: 8px 16px; font-size: 11px;">Cookie-Einstellungen</button>
+            </div>
             <!-- Ersetze mit deiner Polycam-ID -->
-            <iframe src="https://poly.cam/capture/51296336-3914-4903-b0fc-fb0a3a6bc0e8/embed" title="Gebäude ESG Scan"
+            <iframe data-src="https://poly.cam/capture/814afa1e-6655-4fc7-84dc-be33a67cd686/embed" title="Gebäude ESG Scan"
               allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
           </div>
           <div class="scan-info">
@@ -1256,7 +1689,12 @@
         </div>
         <div class="scan-card reveal">
           <div class="scan-iframe-wrap">
-            <iframe src="https://poly.cam/capture/51296336-3914-4903-b0fc-fb0a3a6bc0e8/embed"
+            <div class="cookie-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <p>Modell benötigt Cookies.</p>
+              <button class="btn-secondary" onclick="openCookieSettings()" style="padding: 8px 16px; font-size: 11px;">Zustimmen</button>
+            </div>
+            <iframe data-src="https://poly.cam/capture/cd5d9ee9-1512-417e-9c92-084f68bbcdfd/embed"
               title="Dachfläche Solaranalyse" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
           </div>
           <div class="scan-info">
@@ -1269,7 +1707,12 @@
         </div>
         <div class="scan-card reveal">
           <div class="scan-iframe-wrap">
-            <iframe src="https://poly.cam/capture/51296336-3914-4903-b0fc-fb0a3a6bc0e8/embed"
+            <div class="cookie-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <p>Modell benötigt Cookies.</p>
+              <button class="btn-secondary" onclick="openCookieSettings()" style="padding: 8px 16px; font-size: 11px;">Zustimmen</button>
+            </div>
+            <iframe data-src="https://poly.cam/capture/902ee8df-14ed-4e01-9b9e-4ee17bc433dc/embed"
               title="Außengelände Digital Twin" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
           </div>
           <div class="scan-info">
@@ -1284,8 +1727,8 @@
     </div>
   </section>
 
-  <!-- PROZESS -->
-  <section id="prozess">
+  <!-- ABLAUF -->
+  <section id="ablauf">
     <div class="container">
       <div style="text-align:center;">
         <p class="section-label">Ablauf</p>
@@ -1384,7 +1827,7 @@
       <h3>Berufsbezeichnung</h3>
       <p>Freiberuflich tätig im Bereich ESG Beratung durch Drohnen-Mapping, 3D-Modellierung und Datenanalyse.</p>
       <h3>Umsatzsteuer</h3>
-      <p>Kleinunternehmerregelung § 19 UStG]</p>
+      <p>Kleinunternehmerregelung § 19 UStG</p>
       <h3>Streitschlichtung</h3>
       <p>Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a
           href="https://ec.europa.eu/consumers/odr/" target="_blank">ec.europa.eu/consumers/odr</a>. Wir nehmen nicht an
@@ -1399,24 +1842,35 @@
       <h2>Datenschutzerklärung</h2>
       <h3>1. Verantwortlicher</h3>
       <p>Sebastian Koch, Geiststr. 56, 06108 Halle (Saale) · <a href="mailto:legal@geometr.io">legal@geometr.io</a></p>
-      <h3>2. Hosting</h3>
-      <p>Diese Website wird bei [Hosting-Anbieter] gehostet. Beim Abruf werden Verbindungsdaten (IP, Zeitstempel,
-        aufgerufene URL) in Server-Logfiles gespeichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+      <h3>2. Hosting & Content Delivery Network (Cloudflare)</h3>
+      <p>Diese Website wird auf der Infrastruktur von <strong>Cloudflare Inc.</strong>, 101 Townsend St, San Francisco, CA 94107, USA, bereitgestellt und über deren Content Delivery Network (CDN) ausgeliefert.</p>
+      <p>Beim Aufruf dieser Website wird Ihre IP-Adresse zusammen mit technischen Details (Browser, Zeitstempel, aufgerufene URL) an die Server von Cloudflare übertragen. Dies ist technisch notwendig, um die Website sicher, schnell und fehlertolerant bereitzustellen. Die Verarbeitung stützt sich auf unser berechtigtes Interesse an einer stabilen und sicheren Bereitstellung unseres Online-Angebotes gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+      <p>Weitere Informationen zur Datenverarbeitung finden Sie in der <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Datenschutzerklärung von Cloudflare</a>.</p>
       <h3>3. Kontaktaufnahme per E-Mail</h3>
       <p>Beim Klick auf den Anfrage-Button öffnet sich Ihr lokales Mailprogramm. Ihre Daten werden ausschließlich zur
         Bearbeitung Ihrer Anfrage genutzt und nicht an Dritte weitergegeben. Rechtsgrundlage: Art. 6 Abs. 1 lit. b
         DSGVO.</p>
       <h3>4. Eingebettete Inhalte (Polycam)</h3>
-      <p>Diese Seite bettet 3D-Modelle von Polycam (poly.cam) ein. Beim Laden dieser Inhalte werden Verbindungsdaten an
-        Polycam-Server übertragen. Datenschutzerklärung: <a href="https://poly.cam/privacy"
-          target="_blank">poly.cam/privacy</a></p>
-      <h3>5. Google Fonts</h3>
-      <p>Zur einheitlichen Schriftdarstellung nutzen wir Google Fonts. Dabei wird eine Verbindung zu Google-Servern
-        hergestellt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Weitere Infos: <a
-          href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
-      <h3>6. Ihre Rechte</h3>
+      <p>Auf dieser Website können interaktive 3D-Modelle des Anbieters Polycam (poly.cam) geladen werden. Diese Inhalte sind standardmäßig blockiert, um Ihre Privatsphäre zu schützen. Erst wenn Sie im Cookie-Banner oder bei den Modellen auf "Akzeptieren" klicken, wird eine Verbindung zu den Servern von Polycam hergestellt und Ihre IP-Adresse übertragen. Datenschutzerklärung von Polycam: <a href="https://poly.cam/privacy"
+          target="_blank">poly.cam/privacy</a>.</p>
+      <h3>5. Ihre Rechte & Cookie-Einstellungen</h3>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung. Kontakt: <a
           href="mailto:legal@geometr.io">legal@geometr.io</a></p>
+      <p><a href="#" onclick="openCookieSettings(); closeModal('datenschutz'); return false;">Hier können Sie Ihre Cookie-Einstellungen anpassen</a>.</p>
+    </div>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner">
+    <div class="cookie-title">Cookie-Einstellungen</div>
+    <div class="cookie-text">
+      Wir verwenden technisch notwendige Cookies, um die grundlegende Funktionalität der Website sicherzustellen.
+      Zusätzlich binden wir externe 3D-Modelle von Polycam ein. Mit einem Klick auf "Alle akzeptieren" stimmen Sie zu,
+      dass externe Inhalte geladen werden dürfen, wodurch Daten (wie Ihre IP-Adresse) an Polycam übertragen werden.
+    </div>
+    <div class="cookie-actions">
+      <button class="btn-cookie-decline" onclick="handleCookieChoice('technisch')">Nur Technisch</button>
+      <button class="btn-cookie-accept" onclick="handleCookieChoice('alle')">Alle akzeptieren</button>
     </div>
   </div>
 
@@ -1441,6 +1895,121 @@
     function closeModal(id) { document.getElementById('modal-' + id).classList.remove('active'); document.body.style.overflow = ''; }
     function handleOverlayClick(e, id) { if (e.target === e.currentTarget) closeModal(id); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => { m.classList.remove('active'); document.body.style.overflow = ''; }); });
+
+    // Cookie Consent Logic
+    const cookieBanner = document.getElementById('cookie-banner');
+    
+    function initCookies() {
+      const consent = localStorage.getItem('geometrio-consent');
+      if (!consent) {
+        cookieBanner.classList.add('visible');
+      } else if (consent === 'alle') {
+        loadPolycamIframes();
+      }
+    }
+    
+    function handleCookieChoice(choice) {
+      localStorage.setItem('geometrio-consent', choice);
+      cookieBanner.classList.remove('visible');
+      
+      if (choice === 'alle') {
+        loadPolycamIframes();
+      } else {
+        unloadPolycamIframes();
+      }
+    }
+    
+    function openCookieSettings() {
+      cookieBanner.classList.add('visible');
+    }
+    
+    function loadPolycamIframes() {
+      const wraps = document.querySelectorAll('.scan-iframe-wrap');
+      wraps.forEach(wrap => {
+        const iframe = wrap.querySelector('iframe');
+        const placeholder = wrap.querySelector('.cookie-placeholder');
+        if (iframe && iframe.dataset.src) {
+          iframe.src = iframe.dataset.src;
+          if (placeholder) placeholder.style.display = 'none';
+        }
+      });
+    }
+    
+    function unloadPolycamIframes() {
+      const wraps = document.querySelectorAll('.scan-iframe-wrap');
+      wraps.forEach(wrap => {
+        const iframe = wrap.querySelector('iframe');
+        const placeholder = wrap.querySelector('.cookie-placeholder');
+        if (iframe) {
+          iframe.src = '';
+          if (placeholder) placeholder.style.display = 'flex';
+        }
+      });
+    }
+    
+    initCookies();
+
+    // -- NEW Card Interactions --
+    function triggerSplat(card) {
+      if(card.classList.contains('active')) {
+        card.classList.remove('active');
+        card.querySelector('.splat-particles').innerHTML = '';
+        return;
+      }
+      card.classList.add('shattering');
+      
+      const container = card.querySelector('.splat-particles');
+      container.innerHTML = '';
+      
+      // Create 40 particles
+      for(let i=0; i<40; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        
+        // Randomize color slightly
+        const isLight = document.body.style.getPropertyValue('--dark') === '#f4f8f5' || window.matchMedia('(prefers-color-scheme: light)').matches;
+        p.style.backgroundColor = Math.random() > 0.5 ? 'var(--sage)' : (isLight ? 'var(--sage-deep)' : 'var(--sage-light)');
+        
+        // Start center
+        p.style.left = '50%';
+        p.style.top = '50%';
+        
+        container.appendChild(p);
+        
+        // Animate
+        const angle = Math.random() * Math.PI * 2;
+        const radius = 20 + Math.random() * 120;
+        const tx = Math.cos(angle) * radius;
+        const ty = Math.sin(angle) * radius;
+        
+        p.animate([
+          { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+        ], {
+          duration: 1000 + Math.random() * 600,
+          easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+          fill: 'forwards'
+        });
+      }
+      
+      setTimeout(() => {
+        card.classList.add('active');
+        card.classList.remove('shattering');
+      }, 800);
+    }
+    
+    function advanceStage(card) {
+      if(card.classList.contains('stage-1')) {
+        card.classList.remove('stage-1');
+        card.classList.add('stage-2');
+      } else if(card.classList.contains('stage-2')) {
+        card.classList.remove('stage-2');
+        card.classList.add('stage-3');
+      } else if(card.classList.contains('stage-3')) {
+        card.classList.remove('stage-3');
+        card.classList.add('stage-1');
+      }
+    }
 
     // Scroll reveal mit staggered delay
     const observer = new IntersectionObserver(entries => {
