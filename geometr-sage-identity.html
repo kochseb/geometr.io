@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>geometr.io – Sage Identity System</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sage:       #4a9e6e;
+    --sage-light: #6ab88a;
+    --sage-deep:  #2d6b48;
+    --sage-mist:  #4a9e6e18;
+    --sage-glow:  #4a9e6e33;
+    --dark:       #080d12;
+    --card-dark:  #0d1812;
+    --card-mid:   #111f18;
+    --border:     #1a3028;
+    --text-dim:   #2a5a3a;
+    --light-bg:   #f4f8f5;
+    --light-card: #eaf2ec;
+    --light-border:#ccddd2;
+  }
+
+  body {
+    background: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+    padding: 64px 48px;
+  }
+
+  /* ── Typography ── */
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #1a3a28;
+    margin-bottom: 64px;
+    letter-spacing: 0.06em;
+  }
+  .section {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    max-width: 1100px;
+    margin: 56px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .label-light { color: #7aaa88; }
+
+  /* ── Layout ── */
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1100px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; max-width: 1100px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-dark);
+    border-radius: 14px;
+    padding: 40px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.25s;
+  }
+  .card:hover { border-color: var(--sage-glow); transform: translateY(-2px); }
+
+  .card-light {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+  }
+  .card-light:hover { border-color: #4a9e6e66; }
+
+  .card-sage {
+    background: var(--sage-deep);
+    border: 1px solid #3d8a5e;
+  }
+
+  /* ── Wordmark helpers ── */
+  .wm {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #fff;
+  }
+  .wm .dot { color: var(--sage); }
+  .wm-dark { color: #0a1a10; }
+  .wm-dark .dot { color: var(--sage-deep); }
+  .wm-sage { color: #fff; }
+  .wm-sage .dot { color: #a8dfc0; }
+
+  /* ── Drone SVG reusable via inline ── */
+
+  /* ── Color swatch ── */
+  .swatch {
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    font-size: 10px;
+    font-family: 'DM Sans', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Tagline ── */
+  .tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    opacity: 0.7;
+  }
+
+</style>
+</head>
+<body>
+
+<p class="page-title">geometr.io — Brand Identity System</p>
+<p class="page-sub">Sage · #4a9e6e · Minimal · 1 accent</p>
+
+
+<!-- ══════════════════════════════════════════════
+     01 · PRIMARY LOGO — Icon LEFT of wordmark
+══════════════════════════════════════════════ -->
+<p class="section">01 — Primary Logo · Icon left of wordmark</p>
+<div class="grid-2">
+
+  <!-- Dark primary -->
+  <div class="card" style="padding: 48px 40px;">
+    <div style="display:flex;align-items:center;gap:18px;">
+      <svg width="46" height="46" viewBox="0 0 72 72">
+        <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+        <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+        <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+        <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+        <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+        <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+      </svg>
+      <div class="wm" style="font-size:28px;">geometr<span class="dot">.io</span></div>
+    </div>
+    <div class="label">Primary · Dark</div>
+  </div>
+
+  <!-- Light primary -->
+  <div class="card card-light" style="padding: 48px 40px;">
+    <div style="display:flex;align-items:center;gap:18px;">
+      <svg width="46" height="46" viewBox="0 0 72 72">
+        <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="14" r="4" fill="#eaf2ec"/>
+        <circle cx="58" cy="14" r="4" fill="#eaf2ec"/>
+        <circle cx="58" cy="58" r="4" fill="#eaf2ec"/>
+        <circle cx="14" cy="58" r="4" fill="#eaf2ec"/>
+        <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+        <circle cx="36" cy="36" r="3" fill="#eaf2ec"/>
+      </svg>
+      <div class="wm wm-dark" style="font-size:28px;">geometr<span class="dot">.io</span></div>
+    </div>
+    <div class="label label-light">Primary · Light</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     02 · LOGO SIZES — Responsive scaling
+══════════════════════════════════════════════ -->
+<p class="section">02 — Logo sizes · Responsive scaling</p>
+<div class="grid-3">
+
+  <!-- Large -->
+  <div class="card" style="padding:40px 32px;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <svg width="52" height="52" viewBox="0 0 72 72">
+        <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+        <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+        <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+        <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+        <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+        <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+        <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+      </svg>
+      <div class="wm" style="font-size:32px;">geometr<span class="dot">.io</span></div>
+    </div>
+    <div class="label">Large — 32px type</div>
+  </div>
+
+  <!-- Medium -->
+  <div class="card" style="padding:40px 32px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg width="34" height="34" viewBox="0 0 72 72">
+        <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+        <circle cx="58" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+        <circle cx="58" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+        <circle cx="14" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+        <circle cx="36" cy="36" r="8" fill="#4a9e6e"/>
+        <circle cx="36" cy="36" r="3.5" fill="#0d1812"/>
+      </svg>
+      <div class="wm" style="font-size:20px;">geometr<span class="dot">.io</span></div>
+    </div>
+    <div class="label">Medium — 20px type</div>
+  </div>
+
+  <!-- Small -->
+  <div class="card" style="padding:40px 32px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="22" height="22" viewBox="0 0 72 72">
+        <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="11" fill="#4a9e6e"/>
+        <circle cx="58" cy="14" r="11" fill="#4a9e6e"/>
+        <circle cx="58" cy="58" r="11" fill="#4a9e6e"/>
+        <circle cx="14" cy="58" r="11" fill="#4a9e6e"/>
+        <circle cx="36" cy="36" r="10" fill="#4a9e6e"/>
+      </svg>
+      <div class="wm" style="font-size:14px;">geometr<span class="dot">.io</span></div>
+    </div>
+    <div class="label">Small — 14px type</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     03 · ICON ONLY — Stacked / centered variants
+══════════════════════════════════════════════ -->
+<p class="section">03 — Icon stacked · With tagline</p>
+<div class="grid-3">
+
+  <!-- Stacked dark -->
+  <div class="card" style="padding:44px 24px 32px;">
+    <svg width="64" height="64" viewBox="0 0 72 72">
+      <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+      <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+      <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+      <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+      <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+      <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+    </svg>
+    <div class="wm" style="font-size:22px; text-align:center;">geometr<span class="dot">.io</span></div>
+    <div class="label">Stacked · Dark</div>
+  </div>
+
+  <!-- Stacked with tagline -->
+  <div class="card" style="padding:44px 24px 32px;">
+    <svg width="64" height="64" viewBox="0 0 72 72">
+      <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+      <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+      <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+      <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+      <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+      <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+      <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+    </svg>
+    <div style="text-align:center;">
+      <div class="wm" style="font-size:22px;">geometr<span class="dot">.io</span></div>
+      <div class="tagline" style="margin-top:6px;">Drone · 3D · ESG</div>
+    </div>
+    <div class="label">Stacked · With tagline</div>
+  </div>
+
+  <!-- Stacked on sage bg -->
+  <div class="card card-sage" style="padding:44px 24px 32px;">
+    <svg width="64" height="64" viewBox="0 0 72 72">
+      <line x1="36" y1="36" x2="14" y2="14" stroke="#ffffff33" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="14" stroke="#ffffff33" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="58" y2="58" stroke="#ffffff33" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="36" x2="14" y2="58" stroke="#ffffff33" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="14" cy="14" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="58" cy="14" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="58" cy="58" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="14" cy="58" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="14" cy="14" r="4" fill="#2d6b48"/>
+      <circle cx="58" cy="14" r="4" fill="#2d6b48"/>
+      <circle cx="58" cy="58" r="4" fill="#2d6b48"/>
+      <circle cx="14" cy="58" r="4" fill="#2d6b48"/>
+      <circle cx="36" cy="36" r="7.5" fill="#fff"/>
+      <circle cx="36" cy="36" r="3" fill="#2d6b48"/>
+    </svg>
+    <div class="wm wm-sage" style="font-size:22px; text-align:center;">geometr<span style="color:#a8dfc0;">.io</span></div>
+    <div class="label" style="color:#7abf98;">Stacked · On Sage BG</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     04 · FAVICON ENSEMBLE
+══════════════════════════════════════════════ -->
+<p class="section">04 — Favicon ensemble · All sizes · Dark & Light</p>
+<div class="grid-2">
+
+  <!-- Dark favicons -->
+  <div class="card" style="padding:36px 32px;">
+    <div style="display:flex;gap:24px;align-items:flex-end;justify-content:center;flex-wrap:wrap;">
+
+      <!-- 96px -->
+      <div style="text-align:center;">
+        <svg width="96" height="96" viewBox="0 0 72 72" style="background:#0d1812;border-radius:18px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+          <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+          <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+          <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+          <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+        </svg>
+        <div style="font-size:9px;color:#2a5a3a;margin-top:6px;">96</div>
+      </div>
+
+      <!-- 64px -->
+      <div style="text-align:center;">
+        <svg width="64" height="64" viewBox="0 0 72 72" style="background:#0d1812;border-radius:14px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="14" r="4" fill="#0d1812"/>
+          <circle cx="58" cy="14" r="4" fill="#0d1812"/>
+          <circle cx="58" cy="58" r="4" fill="#0d1812"/>
+          <circle cx="14" cy="58" r="4" fill="#0d1812"/>
+          <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3" fill="#0d1812"/>
+        </svg>
+        <div style="font-size:9px;color:#2a5a3a;margin-top:6px;">64</div>
+      </div>
+
+      <!-- 48px -->
+      <div style="text-align:center;">
+        <svg width="48" height="48" viewBox="0 0 72 72" style="background:#0d1812;border-radius:10px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e55" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e55" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e55" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e55" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="58" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="58" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="14" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="36" cy="36" r="8" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3.5" fill="#0d1812"/>
+        </svg>
+        <div style="font-size:9px;color:#2a5a3a;margin-top:6px;">48</div>
+      </div>
+
+      <!-- 32px -->
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 72 72" style="background:#0d1812;border-radius:7px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e66" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e66" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e66" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e66" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="11" fill="#4a9e6e"/>
+          <circle cx="58" cy="14" r="11" fill="#4a9e6e"/>
+          <circle cx="58" cy="58" r="11" fill="#4a9e6e"/>
+          <circle cx="14" cy="58" r="11" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="10" fill="#4a9e6e"/>
+        </svg>
+        <div style="font-size:9px;color:#2a5a3a;margin-top:6px;">32</div>
+      </div>
+
+      <!-- 16px -->
+      <div style="text-align:center;">
+        <svg width="16" height="16" viewBox="0 0 72 72" style="background:#0d1812;border-radius:3px;display:block;">
+          <circle cx="14" cy="14" r="14" fill="#4a9e6e"/>
+          <circle cx="58" cy="14" r="14" fill="#4a9e6e"/>
+          <circle cx="58" cy="58" r="14" fill="#4a9e6e"/>
+          <circle cx="14" cy="58" r="14" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="12" fill="#4a9e6e"/>
+        </svg>
+        <div style="font-size:9px;color:#2a5a3a;margin-top:6px;">16</div>
+      </div>
+
+    </div>
+    <div class="label">Favicon · Dark background</div>
+  </div>
+
+  <!-- Light favicons -->
+  <div class="card card-light" style="padding:36px 32px;">
+    <div style="display:flex;gap:24px;align-items:flex-end;justify-content:center;flex-wrap:wrap;">
+
+      <!-- 96px light -->
+      <div style="text-align:center;">
+        <svg width="96" height="96" viewBox="0 0 72 72" style="background:#eaf2ec;border-radius:18px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="14" r="4" fill="#eaf2ec"/>
+          <circle cx="58" cy="14" r="4" fill="#eaf2ec"/>
+          <circle cx="58" cy="58" r="4" fill="#eaf2ec"/>
+          <circle cx="14" cy="58" r="4" fill="#eaf2ec"/>
+          <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3" fill="#eaf2ec"/>
+        </svg>
+        <div style="font-size:9px;color:#7aaa88;margin-top:6px;">96</div>
+      </div>
+
+      <!-- 64px light -->
+      <div style="text-align:center;">
+        <svg width="64" height="64" viewBox="0 0 72 72" style="background:#eaf2ec;border-radius:14px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e33" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="14" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="58" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="58" r="8.5" fill="none" stroke="#4a9e6e" stroke-width="1.8"/>
+          <circle cx="14" cy="14" r="4" fill="#eaf2ec"/>
+          <circle cx="58" cy="14" r="4" fill="#eaf2ec"/>
+          <circle cx="58" cy="58" r="4" fill="#eaf2ec"/>
+          <circle cx="14" cy="58" r="4" fill="#eaf2ec"/>
+          <circle cx="36" cy="36" r="7.5" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3" fill="#eaf2ec"/>
+        </svg>
+        <div style="font-size:9px;color:#7aaa88;margin-top:6px;">64</div>
+      </div>
+
+      <!-- 48px light -->
+      <div style="text-align:center;">
+        <svg width="48" height="48" viewBox="0 0 72 72" style="background:#eaf2ec;border-radius:10px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="58" cy="14" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="58" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="14" cy="58" r="9" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+          <circle cx="36" cy="36" r="8" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="3.5" fill="#eaf2ec"/>
+        </svg>
+        <div style="font-size:9px;color:#7aaa88;margin-top:6px;">48</div>
+      </div>
+
+      <!-- 32px light -->
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 72 72" style="background:#eaf2ec;border-radius:7px;display:block;">
+          <line x1="36" y1="36" x2="14" y2="14" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="14" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="58" y2="58" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="36" x2="14" y2="58" stroke="#4a9e6e55" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="11" fill="#4a9e6e"/>
+          <circle cx="58" cy="14" r="11" fill="#4a9e6e"/>
+          <circle cx="58" cy="58" r="11" fill="#4a9e6e"/>
+          <circle cx="14" cy="58" r="11" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="10" fill="#4a9e6e"/>
+        </svg>
+        <div style="font-size:9px;color:#7aaa88;margin-top:6px;">32</div>
+      </div>
+
+      <!-- 16px light -->
+      <div style="text-align:center;">
+        <svg width="16" height="16" viewBox="0 0 72 72" style="background:#eaf2ec;border-radius:3px;display:block;">
+          <circle cx="14" cy="14" r="14" fill="#4a9e6e"/>
+          <circle cx="58" cy="14" r="14" fill="#4a9e6e"/>
+          <circle cx="58" cy="58" r="14" fill="#4a9e6e"/>
+          <circle cx="14" cy="58" r="14" fill="#4a9e6e"/>
+          <circle cx="36" cy="36" r="12" fill="#4a9e6e"/>
+        </svg>
+        <div style="font-size:9px;color:#7aaa88;margin-top:6px;">16</div>
+      </div>
+
+    </div>
+    <div class="label label-light">Favicon · Light background</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     05 · APP ICON — Social / Mobile
+══════════════════════════════════════════════ -->
+<p class="section">05 — App icon · Social avatar · Mobile</p>
+<div class="grid-4">
+
+  <!-- Dark rounded square -->
+  <div class="card" style="padding:32px 20px;">
+    <svg width="96" height="96" viewBox="0 0 90 90">
+      <rect width="90" height="90" rx="20" fill="#0d1812"/>
+      <line x1="45" y1="45" x2="18" y2="18" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="18" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="72" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="18" y2="72" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="18" r="5" fill="#0d1812"/>
+      <circle cx="72" cy="18" r="5" fill="#0d1812"/>
+      <circle cx="72" cy="72" r="5" fill="#0d1812"/>
+      <circle cx="18" cy="72" r="5" fill="#0d1812"/>
+      <circle cx="45" cy="45" r="9" fill="#4a9e6e"/>
+      <circle cx="45" cy="45" r="4" fill="#0d1812"/>
+    </svg>
+    <div class="label">Dark square</div>
+  </div>
+
+  <!-- Sage bg rounded square -->
+  <div class="card card-sage" style="padding:32px 20px;">
+    <svg width="96" height="96" viewBox="0 0 90 90">
+      <rect width="90" height="90" rx="20" fill="#2d6b48"/>
+      <line x1="45" y1="45" x2="18" y2="18" stroke="#ffffff33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="18" stroke="#ffffff33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="72" stroke="#ffffff33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="18" y2="72" stroke="#ffffff33" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="72" cy="18" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="72" cy="72" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="18" cy="72" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="18" cy="18" r="5" fill="#2d6b48"/>
+      <circle cx="72" cy="18" r="5" fill="#2d6b48"/>
+      <circle cx="72" cy="72" r="5" fill="#2d6b48"/>
+      <circle cx="18" cy="72" r="5" fill="#2d6b48"/>
+      <circle cx="45" cy="45" r="9" fill="#fff"/>
+      <circle cx="45" cy="45" r="4" fill="#2d6b48"/>
+    </svg>
+    <div class="label" style="color:#7abf98;">Sage square</div>
+  </div>
+
+  <!-- Circle avatar dark -->
+  <div class="card" style="padding:32px 20px;">
+    <svg width="96" height="96" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="45" fill="#0d1812"/>
+      <line x1="45" y1="45" x2="18" y2="18" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="18" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="72" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="18" y2="72" stroke="#4a9e6e44" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="18" r="5" fill="#0d1812"/>
+      <circle cx="72" cy="18" r="5" fill="#0d1812"/>
+      <circle cx="72" cy="72" r="5" fill="#0d1812"/>
+      <circle cx="18" cy="72" r="5" fill="#0d1812"/>
+      <circle cx="45" cy="45" r="9" fill="#4a9e6e"/>
+      <circle cx="45" cy="45" r="4" fill="#0d1812"/>
+    </svg>
+    <div class="label">Circle avatar · Dark</div>
+  </div>
+
+  <!-- Circle avatar light -->
+  <div class="card card-light" style="padding:32px 20px;">
+    <svg width="96" height="96" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="45" fill="#eaf2ec"/>
+      <line x1="45" y1="45" x2="18" y2="18" stroke="#4a9e6e33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="18" stroke="#4a9e6e33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="72" y2="72" stroke="#4a9e6e33" stroke-width="3" stroke-linecap="round"/>
+      <line x1="45" y1="45" x2="18" y2="72" stroke="#4a9e6e33" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="18" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="72" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="72" r="10" fill="none" stroke="#4a9e6e" stroke-width="2"/>
+      <circle cx="18" cy="18" r="5" fill="#eaf2ec"/>
+      <circle cx="72" cy="18" r="5" fill="#eaf2ec"/>
+      <circle cx="72" cy="72" r="5" fill="#eaf2ec"/>
+      <circle cx="18" cy="72" r="5" fill="#eaf2ec"/>
+      <circle cx="45" cy="45" r="9" fill="#4a9e6e"/>
+      <circle cx="45" cy="45" r="4" fill="#eaf2ec"/>
+    </svg>
+    <div class="label label-light">Circle avatar · Light</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     06 · COLOR SYSTEM
+══════════════════════════════════════════════ -->
+<p class="section">06 — Color system</p>
+<div class="grid-3">
+  <div class="card" style="padding:28px 24px; gap:12px;">
+    <div class="swatch" style="background:#4a9e6e; color:#fff;">
+      <span>Sage</span><span>#4a9e6e</span>
+    </div>
+    <div class="swatch" style="background:#2d6b48; color:#a8dfc0;">
+      <span>Sage Deep</span><span>#2d6b48</span>
+    </div>
+    <div class="swatch" style="background:#6ab88a; color:#0d1812;">
+      <span>Sage Light</span><span>#6ab88a</span>
+    </div>
+    <div class="label" style="margin-top:4px;">Primary palette</div>
+  </div>
+  <div class="card" style="padding:28px 24px; gap:12px;">
+    <div class="swatch" style="background:#080d12; color:#2a5a3a; border:1px solid #1a3028;">
+      <span>Dark BG</span><span>#080d12</span>
+    </div>
+    <div class="swatch" style="background:#0d1812; color:#2a5a3a; border:1px solid #1a3028;">
+      <span>Dark Card</span><span>#0d1812</span>
+    </div>
+    <div class="swatch" style="background:#1a3028; color:#4a9e6e;">
+      <span>Border</span><span>#1a3028</span>
+    </div>
+    <div class="label" style="margin-top:4px;">Dark mode surfaces</div>
+  </div>
+  <div class="card card-light" style="padding:28px 24px; gap:12px;">
+    <div class="swatch" style="background:#f4f8f5; color:#7aaa88; border:1px solid #ccddd2;">
+      <span>Light BG</span><span>#f4f8f5</span>
+    </div>
+    <div class="swatch" style="background:#eaf2ec; color:#7aaa88; border:1px solid #ccddd2;">
+      <span>Light Card</span><span>#eaf2ec</span>
+    </div>
+    <div class="swatch" style="background:#0a1a10; color:#4a9e6e;">
+      <span>Dark Text</span><span>#0a1a10</span>
+    </div>
+    <div class="label label-light" style="margin-top:4px;">Light mode surfaces</div>
+  </div>
+</div>
+
+</body>
+</html>

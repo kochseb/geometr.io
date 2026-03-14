@@ -10,7 +10,13 @@
 
   <!-- Favicon als Data-URI – keine Datei nötig -->
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d1812'/><line x1='50' y1='50' x2='18' y2='18' stroke='%234a9e6e' stroke-opacity='.35' stroke-width='5' stroke-linecap='round'/><line x1='50' y1='50' x2='82' y2='18' stroke='%234a9e6e' stroke-opacity='.35' stroke-width='5' stroke-linecap='round'/><line x1='50' y1='50' x2='82' y2='82' stroke='%234a9e6e' stroke-opacity='.35' stroke-width='5' stroke-linecap='round'/><line x1='50' y1='50' x2='18' y2='82' stroke='%234a9e6e' stroke-opacity='.35' stroke-width='5' stroke-linecap='round'/><circle cx='18' cy='18' r='10' fill='none' stroke='%234a9e6e' stroke-width='4'/><circle cx='82' cy='18' r='10' fill='none' stroke='%234a9e6e' stroke-width='4'/><circle cx='82' cy='82' r='10' fill='none' stroke='%234a9e6e' stroke-width='4'/><circle cx='18' cy='82' r='10' fill='none' stroke='%234a9e6e' stroke-width='4'/><circle cx='50' cy='50' r='13' fill='%234a9e6e'/><circle cx='50' cy='50' r='5' fill='%230d1812'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><line x1='36' y1='36' x2='14' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='14' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='58' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><line x1='36' y1='36' x2='14' y2='58' stroke='%234a9e6e' stroke-opacity='.33' stroke-width='4' stroke-linecap='round'/><circle cx='14' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='14' r='11' fill='%234a9e6e'/><circle cx='58' cy='58' r='11' fill='%234a9e6e'/><circle cx='14' cy='58' r='11' fill='%234a9e6e'/><circle cx='36' cy='36' r='10' fill='%234a9e6e'/></svg>">
+
+  <link rel="apple-touch-icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d1812'/><circle cx='50' cy='50' r='13' fill='%234a9e6e'/></svg>">
+  <meta name="theme-color" content="#080d12">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
@@ -38,9 +44,23 @@
       --text-primary: #e8f2ec;
       --text-dim: #5a8a6a;
       --text-muted: #2a5a3a;
+      --bg-rgb: 8, 13, 18;
       --font-display: 'Syne', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --nav-h: 68px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --dark: #f4f8f5;
+        --dark-card: #eaf2ec;
+        --dark-mid: #ffffff;
+        --border: #ccddd2;
+        --text-primary: #0a1a10;
+        --text-dim: #1a3a28;
+        --text-muted: #5a8a6a;
+        --bg-rgb: 244, 248, 245;
+      }
     }
 
     html {
@@ -115,7 +135,7 @@
     }
 
     nav.scrolled {
-      background: rgba(8, 13, 18, 0.94);
+      background: rgba(var(--bg-rgb), 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -208,7 +228,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(to top, rgba(8, 13, 18, 0.97) 0%, rgba(8, 13, 18, 0.5) 45%, rgba(8, 13, 18, 0.1) 100%);
+      background: linear-gradient(to top, rgba(var(--bg-rgb), 0.97) 0%, rgba(var(--bg-rgb), 0.5) 45%, rgba(var(--bg-rgb), 0.1) 100%);
     }
 
     .hero-grid {
@@ -859,7 +879,7 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(8, 13, 18, 0.88);
+      background: rgba(var(--bg-rgb), 0.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       display: flex;
@@ -1019,7 +1039,7 @@
         flex-direction: column;
         position: fixed;
         inset: var(--nav-h) 0 0 0;
-        background: rgba(8, 13, 18, 0.98);
+        background: rgba(var(--bg-rgb), 0.98);
         backdrop-filter: blur(20px);
         align-items: center;
         justify-content: center;
@@ -1066,15 +1086,15 @@
               stroke-linecap="round" />
             <line x1="0" y1="0" x2="-13" y2="13" stroke="#4a9e6e" stroke-opacity="0.3" stroke-width="2"
               stroke-linecap="round" />
-            <circle cx="-13" cy="-13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-            <circle cx="13" cy="-13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-            <circle cx="13" cy="13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-            <circle cx="-13" cy="13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
+            <circle cx="-13" cy="-13" r="5.5" fill="var(--dark)" stroke="#4a9e6e" stroke-width="1.6" />
+            <circle cx="13" cy="-13" r="5.5" fill="var(--dark)" stroke="#4a9e6e" stroke-width="1.6" />
+            <circle cx="13" cy="13" r="5.5" fill="var(--dark)" stroke="#4a9e6e" stroke-width="1.6" />
+            <circle cx="-13" cy="13" r="5.5" fill="var(--dark)" stroke="#4a9e6e" stroke-width="1.6" />
             <circle cx="0" cy="0" r="5.2" fill="#4a9e6e" />
-            <circle cx="0" cy="0" r="2.1" fill="#0d1812" />
+            <circle cx="0" cy="0" r="2.1" fill="var(--dark)" />
           </g>
           <text x="56" y="32" font-family="Syne,Helvetica,Arial,sans-serif" font-weight="700" font-size="22"
-            fill="#e8f2ec" letter-spacing="-0.5">geometr<tspan fill="#4a9e6e">.io</tspan></text>
+            fill="var(--text-primary)" letter-spacing="-0.5">geometr<tspan fill="#4a9e6e">.io</tspan></text>
         </svg>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -1334,15 +1354,15 @@
             stroke-linecap="round" />
           <line x1="0" y1="0" x2="-13" y2="13" stroke="#4a9e6e" stroke-opacity="0.3" stroke-width="2"
             stroke-linecap="round" />
-          <circle cx="-13" cy="-13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-          <circle cx="13" cy="-13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-          <circle cx="13" cy="13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
-          <circle cx="-13" cy="13" r="5.5" fill="#0d1812" stroke="#4a9e6e" stroke-width="1.6" />
+          <circle cx="-13" cy="-13" r="5.5" fill="var(--dark-card)" stroke="#4a9e6e" stroke-width="1.6" />
+          <circle cx="13" cy="-13" r="5.5" fill="var(--dark-card)" stroke="#4a9e6e" stroke-width="1.6" />
+          <circle cx="13" cy="13" r="5.5" fill="var(--dark-card)" stroke="#4a9e6e" stroke-width="1.6" />
+          <circle cx="-13" cy="13" r="5.5" fill="var(--dark-card)" stroke="#4a9e6e" stroke-width="1.6" />
           <circle cx="0" cy="0" r="5.2" fill="#4a9e6e" />
-          <circle cx="0" cy="0" r="2.1" fill="#0d1812" />
+          <circle cx="0" cy="0" r="2.1" fill="var(--dark-card)" />
         </g>
         <text x="56" y="32" font-family="Syne,Helvetica,Arial,sans-serif" font-weight="700" font-size="22"
-          fill="#e8f2ec" letter-spacing="-0.5">geometr<tspan fill="#4a9e6e">.io</tspan></text>
+          fill="var(--text-primary)" letter-spacing="-0.5">geometr<tspan fill="#4a9e6e">.io</tspan></text>
       </svg>
       <ul class="footer-links">
         <li><button onclick="openModal('impressum')">Impressum</button></li>
@@ -1378,7 +1398,7 @@
       <button class="modal-close" onclick="closeModal('datenschutz')">×</button>
       <h2>Datenschutzerklärung</h2>
       <h3>1. Verantwortlicher</h3>
-      <p>Sebastian Koch, Geiststr. 56, 06108 Halle (Saale) · <a href="mailto:info@geometr.io">info@geometr.io</a></p>
+      <p>Sebastian Koch, Geiststr. 56, 06108 Halle (Saale) · <a href="mailto:legal@geometr.io">legal@geometr.io</a></p>
       <h3>2. Hosting</h3>
       <p>Diese Website wird bei [Hosting-Anbieter] gehostet. Beim Abruf werden Verbindungsdaten (IP, Zeitstempel,
         aufgerufene URL) in Server-Logfiles gespeichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
@@ -1396,7 +1416,7 @@
           href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
       <h3>6. Ihre Rechte</h3>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung. Kontakt: <a
-          href="mailto:hallo@geometr.io">hallo@geometr.io</a></p>
+          href="mailto:legal@geometr.io">legal@geometr.io</a></p>
     </div>
   </div>
 
