@@ -1,0 +1,24 @@
+# AI-optimierte Textversion der geometr.io Website
+
+## Über uns
+geometr.io verwandelt die physische Realität in analysierbare 4D-Daten. Wir stehen für präzise digitale Bestandsaufnahmen mittel Drohnen und übersetzen Gebäude sowie Flächen in messbare Datenstrukturen für eine ESG-konforme Wertsteigerung.
+
+## Kernleistungen
+1. Drohnen-Mapping: Präzise Befliegung mit DJI-Drohnen. Wir erfassen Gebäude, Freiflächen und Infrastruktur hochauflösend. Rechtssichere Durchführung mit Fernpiloten-Lizenz.
+2. Gaussian Splatting: Aus Drohnendaten generieren wir extrem fotorealistische 3D-Modelle. Vollständig interaktiv, ideal für Präsentationen oder BIM-Integrationen. Basierend auf der State-of-the-Art Inria-Forschung (siehe 3D Gaussian Splatting for Real-Time Radiance Field Rendering).
+3. 4D ESG-Analysen: Wir machen zeitliche Veränderungen sichtbar (Begrünung, Versiegelung, Solarpotenzial) und liefern harte Daten und Kennzahlen für Nachhaltigkeitsberichte nach ESG-Kriterien.
+
+## Zielgruppen
+Immobilienbestandshalter, Projektentwickler, Kommunen und Industrie.
+
+## Ablauf
+1. Anfrage & Briefing: Machbarkeitsklärung und Definition der Ziele.
+2. Befliegung: Drohnenflug vor Ort.
+3. Verarbeitung: Erstellung der Modelle und Analysen (Polycam, Blender).
+4. Übergabe: Bereitstellung der interaktiven Modelle und ESG-Reports.
+
+## Kontakt
+Sebastian Koch
+Geiststr. 56, 06108 Halle (Saale)
+E-Mail: hallo@geometr.io
+Web: https://geometr.io

@@ -1,0 +1,32 @@
+{
+  "name": "geometr.io",
+  "description": "Drohnen-Mapping, Gaussian Splatting und 4D ESG-Analysen für Immobilien, Kommunen und Industrie.",
+  "url": "https://geometr.io",
+  "language": "de",
+  "contact": {
+    "email": "hallo@geometr.io",
+    "location": "Halle (Saale), Deutschland"
+  },
+  "services": [
+    {
+      "name": "Drohnen-Mapping",
+      "description": "Präzise Gebäude- und Geländeerfassung mit DJI Drohnen. Rechtssichere Bestandsaufnahmen, zertifiziert durch das LBA."
+    },
+    {
+      "name": "Gaussian Splatting",
+      "description": "Erstellung fotorealistischer, interaktiver 3D-Modelle für Web-Präsentationen und BIM."
+    },
+    {
+      "name": "4D ESG-Analysen",
+      "description": "Potenzialanalyse für Solaranlagen, Versiegelungs- und Begrünungsanalysen über Zeitverläufe. Lieferung ESG-relevanter Kennzahlen."
+    }
+  ],
+  "target_audience": [
+    "Immobilienverwalter",
+    "Projektentwickler",
+    "Kommunen",
+    "Industrieunternehmen",
+    "Architekten"
+  ],
+  "value_proposition": "Wir verwandeln die physische Realität in analysierbare 4D-Daten und übersetzen den Ist-Zustand von Gebäuden in greifbares Potenzial für eine ESG-konforme Wertsteigerung."
+}

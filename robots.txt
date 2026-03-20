@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /site-context.json
+
+Sitemap: https://geometr.io/sitemap.xml
