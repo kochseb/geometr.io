@@ -2061,8 +2061,8 @@
                     style="padding: 8px 16px; font-size: 11px; margin-top: 12px;">Link per E-Mail anfordern</a>
                 </div>
               </noscript>
-              <!-- Ersetze mit deiner Polycam-ID -->
-              <iframe data-src="https://poly.cam/capture/814afa1e-6655-4fc7-84dc-be33a67cd686/embed"
+              <!-- Ersetze mit deiner LumaLabs-ID oder Polycam-ID -->
+              <iframe data-src="https://lumalabs.ai/embed/8079ca8c-e301-4165-aeac-6ab9d7ac58a3?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
                 title="Gebäude ESG Scan" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
             </div>
             <div class="scan-info">
@@ -2287,12 +2287,13 @@
       <p>Beim Klick auf den Anfrage-Button öffnet sich Ihr lokales Mailprogramm. Ihre Daten werden ausschließlich zur
         Bearbeitung Ihrer Anfrage genutzt und nicht an Dritte weitergegeben. Rechtsgrundlage: Art. 6 Abs. 1 lit. b
         DSGVO.</p>
-      <h3>4. Eingebettete Inhalte (Polycam)</h3>
-      <p>Auf dieser Website können interaktive 3D-Modelle des Anbieters Polycam (poly.cam) geladen werden. Diese Inhalte
-        sind standardmäßig blockiert, um Ihre Privatsphäre zu schützen. Erst wenn Sie im Cookie-Banner oder bei den
-        Modellen auf "Akzeptieren" klicken, wird eine Verbindung zu den Servern von Polycam hergestellt und Ihre
-        IP-Adresse übertragen. Datenschutzerklärung von Polycam: <a href="https://poly.cam/privacy"
-          target="_blank">poly.cam/privacy</a>.</p>
+      <h3>4. Eingebettete Inhalte (Polycam & LumaLabs)</h3>
+      <p>Auf dieser Website können interaktive 3D-Modelle der Anbieter Polycam (poly.cam) und LumaLabs (lumalabs.ai)
+        geladen werden. Diese Inhalte sind standardmäßig blockiert, um Ihre Privatsphäre zu schützen. Erst wenn Sie im
+        Cookie-Banner oder bei den Modellen auf "Akzeptieren" klicken, wird eine Verbindung zu den Servern der jeweiligen
+        Anbieter hergestellt und Ihre IP-Adresse übertragen. Datenschutzerklärungen:
+        <a href="https://poly.cam/privacy" target="_blank">poly.cam/privacy</a> und
+        <a href="https://lumalabs.ai/privacy" target="_blank">lumalabs.ai/privacy</a>.</p>
       <h3>5. Ihre Rechte & Cookie-Einstellungen</h3>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung. Kontakt: <a
           href="mailto:legal@geometr.io">legal@geometr.io</a></p>
@@ -2306,8 +2307,9 @@
     <div class="cookie-title">Cookie-Einstellungen</div>
     <div class="cookie-text">
       Wir verwenden technisch notwendige Cookies, um die grundlegende Funktionalität der Website sicherzustellen.
-      Zusätzlich binden wir externe 3D-Modelle von Polycam ein. Mit einem Klick auf "Alle akzeptieren" stimmen Sie zu,
-      dass externe Inhalte geladen werden dürfen, wodurch Daten (wie Ihre IP-Adresse) an Polycam übertragen werden.
+      Zusätzlich binden wir externe 3D-Modelle von Polycam und LumaLabs ein. Mit einem Klick auf "Alle akzeptieren"
+      stimmen Sie zu, dass externe Inhalte geladen werden dürfen, wodurch Daten (wie Ihre IP-Adresse) an die jeweiligen
+      Anbieter übertragen werden.
     </div>
     <div class="cookie-actions">
       <button class="btn-cookie-decline" onclick="handleCookieChoice('technisch')">Nur Technisch</button>
@@ -2396,7 +2398,7 @@
       if (!consent) {
         cookieBanner.classList.add('visible');
       } else if (consent === 'alle') {
-        loadPolycamIframes();
+        loadExternalIframes();
       }
     }
 
@@ -2405,20 +2407,20 @@
       cookieBanner.classList.remove('visible');
 
       if (choice === 'alle') {
-        loadPolycamIframes();
+        loadExternalIframes();
       } else {
-        unloadPolycamIframes();
+        unloadExternalIframes();
       }
     }
 
     // FIX: openCookieSettings resets consent so user can choose again
     function openCookieSettings() {
       localStorage.removeItem('geometrio-consent');
-      unloadPolycamIframes();
+      unloadExternalIframes();
       cookieBanner.classList.add('visible');
     }
 
-    function loadPolycamIframes() {
+    function loadExternalIframes() {
       const wraps = document.querySelectorAll('.scan-iframe-wrap');
       wraps.forEach(wrap => {
         const iframe = wrap.querySelector('iframe');
@@ -2433,13 +2435,13 @@
       });
     }
 
-    function unloadPolycamIframes() {
+    function unloadExternalIframes() {
       const wraps = document.querySelectorAll('.scan-iframe-wrap');
       wraps.forEach(wrap => {
         const iframe = wrap.querySelector('iframe');
         const placeholder = wrap.querySelector('.cookie-placeholder');
         if (iframe && iframe.src) {
-          // FIX: restore data-src so loadPolycamIframes can re-load on re-consent
+          // FIX: restore data-src so loadExternalIframes can re-load on re-consent
           iframe.dataset.src = iframe.src;
           iframe.src = '';
           if (placeholder) placeholder.style.display = 'flex';
